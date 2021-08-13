@@ -18,7 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "https://product-manager-demo.herokuapp.com")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
 

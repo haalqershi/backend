@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
-@CrossOrigin("https://product-manager-demo.herokuapp.com")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Api(value = "Product Resource REST Endpoint", description = "Shows product information")
 public class ProductController {
 
