@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/category")
-@CrossOrigin(origins = {"*", "https://angular-product-manager-demo.herokuapp.com"}, allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(origins = {"*", "https://angular-product-manager-demo.herokuapp.com"}, allowedHeaders = "*")
 @Api(value = "Category Resource REST Endpoint", description = "Shows category information")
 public class CategoryController {
 
