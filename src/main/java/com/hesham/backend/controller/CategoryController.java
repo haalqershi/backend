@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/category")
+@CrossOrigin()
 @Api(value = "Category Resource REST Endpoint", description = "Shows category information")
 public class CategoryController {
 
