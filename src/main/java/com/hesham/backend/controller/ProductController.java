@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/product")
-@CrossOrigin(origins = {"*", "https://angular-product-manager-demo.herokuapp.com"}, allowedHeaders = "*")
 @Api(value = "Product Resource REST Endpoint", description = "Shows product information")
 public class ProductController {
 

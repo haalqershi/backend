@@ -7,6 +7,7 @@ import com.hesham.backend.model.User;
 import com.hesham.backend.service.MyUserDetailsService;
 import com.hesham.backend.service.UserService;
 import com.hesham.backend.util.JwtUtil;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@CrossOrigin(origins = {"*", "https://angular-product-manager-demo.herokuapp.com"}, allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
 
@@ -52,11 +55,17 @@ public class UserController {
         return new ResponseEntity<>(authenticationRequest , jwtHeader, HttpStatus.OK);
     }
 
-
     @PostMapping("/register")
     public ResponseEntity<User> createAuthenticationToken(@RequestBody User user){
         User newUser = this.userService.registerNewUser(user.getUsername(), user.getPassword());
         return new ResponseEntity<>(newUser, HttpStatus.OK);
+    }
+
+    @GetMapping("/user/all")
+    @ApiOperation(value = "Find List of Users", notes = "used to retrieve list of Users", response = User.class)
+    public ResponseEntity<List<User>> getUsers(){
+        List<User> users = this.userService.getAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
 }
