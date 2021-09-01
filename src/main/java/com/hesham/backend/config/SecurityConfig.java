@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/login", "/register", "/user/all").permitAll()
+                .antMatchers("/login", "/register").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().sessionManagement()
@@ -74,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
 
         final UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
-        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
+        //urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(urlBasedCorsConfigurationSource));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
