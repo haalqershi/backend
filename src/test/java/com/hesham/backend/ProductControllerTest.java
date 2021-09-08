@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -45,7 +46,7 @@ public class ProductControllerTest {
     @Test
     public void testGetAllProducts() throws Exception {
 
-        ArrayList<Product> products = new ArrayList<>();
+        List<Product> products = new ArrayList<>();
         products.add(new Product(1l, "iphone 8", 450.50
                 , 6, "New Gold Iphone 8", ""));
 
@@ -57,5 +58,21 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[0].name").value("iphone 8"))
                 .andExpect(jsonPath("$[0].price").value(450.50))
                 .andExpect(jsonPath("$[0].quantity").value(6));
+    }
+
+    @Test
+    public void testGetCategoryByCategoryId() throws Exception {
+
+        List <Product> products = new ArrayList<>();
+        products.add(new Product(1l, "design pattern"
+                , 88.8, 3, "design pattern by Hesham", ""));
+        //List<Category> categories = Arrays.asList(new Category(1l, "books", products));
+
+        when(productService.findProductsByCategoryId(1l)).thenReturn(products);
+
+        mockMvc.perform(get("/product/category/{id}", 1l)
+                        .contentType(MediaType.APPLICATION_JSON))
+                        .andDo(print())
+                        .andExpect(jsonPath("$[0].name").value("design pattern"));
     }
 }

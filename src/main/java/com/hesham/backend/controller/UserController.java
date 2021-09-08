@@ -56,9 +56,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> createAuthenticationToken(@RequestBody User user){
+    public User createAuthenticationToken(@RequestBody User user){
         User newUser = this.userService.registerNewUser(user.getUsername(), user.getPassword());
-        return new ResponseEntity<>(newUser, HttpStatus.OK);
+        return newUser;
     }
 
     @GetMapping("/user/all")

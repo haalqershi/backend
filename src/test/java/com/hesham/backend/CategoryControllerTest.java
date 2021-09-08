@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -46,7 +47,7 @@ public class CategoryControllerTest {
 
     @Test
     public void testGetAllCategories() throws Exception {
-        ArrayList<Category> categories = new ArrayList<>();
+        List<Category> categories = new ArrayList<>();
         categories.add(new Category(1l, "books",
                 Arrays.asList(new Product(1l, "design pattern"
                         , 88.8, 3, "design pattern by Hesham", ""))));
@@ -54,7 +55,7 @@ public class CategoryControllerTest {
         when(categoryService.findAllCategories()).thenReturn(categories);
 
         mockMvc.perform(get("/category/all")
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(jsonPath("$[0].categoryName").value("books"));
     }
