@@ -26,13 +26,6 @@ import static org.mockito.Mockito.when;
 @AutoConfigureMockMvc
 public class CategoryServiceTest {
 
-//    public List<Category> findAllCategories() {
-//        return this.categoryRepository.findAll();
-//    }
-//
-//    public Category save(Category category) {
-//        return this.categoryRepository.save(category);
-//    }
     @MockBean
     CategoryRepository categoryRepository;
 
@@ -79,7 +72,5 @@ public class CategoryServiceTest {
         assertNotNull(category);
         assertEquals(category.getCategoryName(), "cell phones");
     }
-
-
 
 }
