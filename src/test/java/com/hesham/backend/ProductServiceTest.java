@@ -15,6 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -52,5 +56,24 @@ public class ProductServiceTest {
         Product product = productService.addProduct(new Product(), 1l);
 
         assertNotNull(product);
+    }
+
+    @Test
+    public void testFindAllProducts(){
+        List<Product> productList = new ArrayList<>();
+        productList.add(new Product(1l, "Iphone XR"
+                , 450.70, 107, "Iphone XR 64GB", ""));
+
+        when(productRepository.findAll()).thenReturn(productList);
+        List<Product> products = productService.findAllProducts();
+        assertEquals(products.size(), 1);
+        assertEquals(products.get(0).getName(), "Iphone XR");
+        assertEquals(products.get(0).getPrice(), 450.70);
+
+        productList.add(newProduct);
+        assertEquals(products.size(), 2);
+        assertEquals(products.get(1).getName(), "Thinkpad");
+        assertEquals(products.get(1).getPrice(), 1858.00);
+
     }
 }
