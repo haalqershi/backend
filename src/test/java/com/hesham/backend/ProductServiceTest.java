@@ -97,4 +97,10 @@ public class ProductServiceTest {
         assertNotNull(product);
         verify(productRepository, times(1)).findProductById(product.getId());
     }
+
+    @Test
+    public void testDeleteProduct(){
+
+    }
+
 }
