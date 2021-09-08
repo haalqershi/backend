@@ -30,15 +30,15 @@ public class ProductServiceImplTest {
 //		Product e1 = service.findProductById(30l);
 //		assertEquals("abc2", e1.getName());
 //	}
-	@Test
-	public void testDeleteProject() {
-		Product d = new Product(8l, "d", 12, 12, "nv", "rg");
-		service.addProduct(d, 8l);
-		Product d1 = service.findProductById(8l);
-		assertEquals("d", d1.getName());
-		service.deleteProduct(8l);
-		d1 = service.findProductById(8l);
-		assertEquals("User by id 8 was not found", d1);
-	}
-
+//	@Test
+//	public void testDeleteProject() {
+//		Product d = new Product(8l, "d", 12, 12, "nv", "rg");
+//		service.addProduct(d, 8l);
+//		Product d1 = service.findProductById(8l);
+//		assertEquals("d", d1.getName());
+//		service.deleteProduct(8l);
+//		d1 = service.findProductById(8l);
+//		assertEquals("User by id 8 was not found", d1);
+//	}
+//
 }
