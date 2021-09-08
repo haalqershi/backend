@@ -20,11 +20,13 @@ public class ProductServiceImpl implements ProductService{
         this.productRepository = productRepository;
     }
 
-    public void addProduct(Product product, long categoryId){
+    public Product addProduct(Product product, long categoryId){
         System.out.println("product " + product);
         System.out.println(("category id : " + categoryId));
         this.productRepository.addNewProduct(product.getId(), product.getDescription(), product.getImageUrl()
                 , product.getName(), product.getPrice(), product.getQuantity(), categoryId);
+
+        return product;
     }
 
     public List<Product> findAllProducts(){
