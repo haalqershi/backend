@@ -74,6 +74,14 @@ public class ProductServiceTest {
         assertEquals(products.size(), 2);
         assertEquals(products.get(1).getName(), "Thinkpad");
         assertEquals(products.get(1).getPrice(), 1858.00);
+    }
 
+    @Test
+    public void testUpdateProduct(){
+        when(productRepository.save(ArgumentMatchers.any(Product.class))).thenReturn(newProduct);
+        Product product = productService.updateProduct(new Product());
+
+        assertNotNull(product);
+        System.out.println("Update Product: " + product);
     }
 }
