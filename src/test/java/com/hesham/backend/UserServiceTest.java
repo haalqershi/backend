@@ -6,6 +6,7 @@ import com.hesham.backend.service.UserService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
@@ -65,5 +67,16 @@ public class UserServiceTest {
         users = userService.getAllUsers();
         assertEquals(users.size(), 2);
         assertEquals(users.get(1).getFirstName(), "John");
+    }
+
+    @Test
+    public void testRegisterNewUser(){
+        when(userRepository.save(ArgumentMatchers.any(User.class))).thenReturn(user);
+
+        User newUser = userService.registerNewUser(new User());
+
+        assertNotNull(newUser);
+        assertEquals(newUser.getId(), 1l);
+        assertEquals(newUser.getUsername(), "hesham");
     }
 }

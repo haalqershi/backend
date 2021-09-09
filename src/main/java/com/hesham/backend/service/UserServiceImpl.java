@@ -18,11 +18,11 @@ public class UserServiceImpl implements UserService{
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public User registerNewUser(String username, String password) {
-        User newUser = new User();
-        newUser.setPassword(passwordEncoder.encode(password));
-        newUser.setUsername(username);
-        return this.userRepository.save(newUser);
+    public User registerNewUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setUsername(user.getUsername());
+        User newUser =  this.userRepository.save(user);
+        return newUser;
     }
 
     @Override

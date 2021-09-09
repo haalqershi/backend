@@ -57,7 +57,7 @@ public class UserController {
 
     @PostMapping("/register")
     public User createAuthenticationToken(@RequestBody User user){
-        User newUser = this.userService.registerNewUser(user.getUsername(), user.getPassword());
+        User newUser = this.userService.registerNewUser(user);
         return newUser;
     }
 
