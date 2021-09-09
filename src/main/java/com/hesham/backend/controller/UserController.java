@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
+    public ResponseEntity<?> login(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername()
                     , authenticationRequest.getPassword()));
@@ -56,7 +56,8 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public User createAuthenticationToken(@RequestBody User user){
+    @ApiOperation(value = "Register a new user", notes = "used to register a new user", response = User.class)
+    public User register(@RequestBody User user){
         User newUser = this.userService.registerNewUser(user);
         return newUser;
     }

@@ -97,6 +97,33 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.5</version>
+				<executions>
+					<execution>
+						<id>prepare-unit-tests</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<append>true</append>
+							<destFile>${sonar.jacoco.reportPath}</destFile>
+							<propertyName>surefireArgline</propertyName>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<excludes>**/hesham/backend/BackendApplication.class</excludes>
+					<excludes>**/hesham/backend/model/*</excludes>
+					<excludes>**/hesham/backend/security/*</excludes>
+					<excludes>**/hesham/backend/config/*</excludes>
+					<excludes>**/hesham/backend/exception/*</excludes>
+					<excludes>**/hesham/backend/filter/*</excludes>
+					<excludes>**/hesham/backend/util/*</excludes>
+				</configuration>
+			</plugin>
 		</plugins>
 		<finalName>backend</finalName>
 	</build>
