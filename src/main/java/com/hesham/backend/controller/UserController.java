@@ -9,6 +9,8 @@ import com.hesham.backend.service.UserService;
 import com.hesham.backend.util.JwtUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,7 +28,7 @@ import java.util.List;
 @Api(value = "User Resource REST Endpoint")
 public class UserController {
 
-
+    private static Logger logger = LoggerFactory.getLogger(UserController.class);
     private AuthenticationManager authenticationManager;
     private MyUserDetailsService myUserDetailsService;
     private JwtUtil jwtToken;

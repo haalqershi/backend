@@ -5,6 +5,8 @@ import com.hesham.backend.service.CategoryService;
 import com.hesham.backend.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +19,7 @@ import java.util.List;
 @RequestMapping("/product")
 @Api(value = "Product Resource REST Endpoint")
 public class ProductController {
-
+    private static Logger logger = LoggerFactory.getLogger(ProductController.class);
     private ProductService productService;
     private CategoryService categoryService;
 

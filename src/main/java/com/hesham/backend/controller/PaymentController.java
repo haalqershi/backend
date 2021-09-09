@@ -3,6 +3,8 @@ package com.hesham.backend.controller;
 import com.hesham.backend.model.StripeClient;
 import com.stripe.model.Charge;
 import io.swagger.annotations.Api;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/payment")
 @Api(value = "Stripe Payment Resource REST Endpoint")
 public class PaymentController {
+
+    private static Logger logger = LoggerFactory.getLogger(PaymentController.class);
 
     private StripeClient stripeClient;
 
