@@ -39,6 +39,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
+    @ApiOperation(value = "Login an active user", notes = "used to login a user", response = ResponseEntity.class)
     public ResponseEntity<?> login(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername()
