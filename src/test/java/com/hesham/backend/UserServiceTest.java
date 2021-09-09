@@ -88,4 +88,13 @@ public class UserServiceTest {
         assertNotNull(newUser);
         assertEquals(newUser.getUsername(), "hesham");
     }
+
+    @Test
+    public void findUserByEmail(){
+        when(userRepository.findUserByEmail(ArgumentMatchers.any(String.class))).thenReturn(user);
+        User newUser = userService.findUserByEmail("hesham_alqershi@hcl.com");
+
+        assertNotNull(newUser);
+        assertEquals(newUser.getEmail(), "hesham_alqershi@hcl.com");
+    }
 }
