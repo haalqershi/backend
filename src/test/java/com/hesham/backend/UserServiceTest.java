@@ -79,4 +79,13 @@ public class UserServiceTest {
         assertEquals(newUser.getId(), 1l);
         assertEquals(newUser.getUsername(), "hesham");
     }
+
+    @Test
+    public void testFindUserByUsername(){
+        when(userRepository.findUserByUsername(ArgumentMatchers.any(String.class))).thenReturn(user);
+        User newUser = userService.findUserByUsername("hesham");
+
+        assertNotNull(newUser);
+        assertEquals(newUser.getUsername(), "hesham");
+    }
 }
