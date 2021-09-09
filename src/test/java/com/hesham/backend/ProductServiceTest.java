@@ -21,11 +21,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
-
-
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest
@@ -100,7 +96,9 @@ public class ProductServiceTest {
 
     @Test
     public void testDeleteProduct(){
-
+        doNothing().when(productRepository).deleteById(1l);
+        productService.deleteProduct(1l);
+        verify(productRepository, times(1)).deleteById(1l);
     }
 
 }
