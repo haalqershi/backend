@@ -7,6 +7,7 @@ import com.hesham.backend.model.User;
 import com.hesham.backend.service.MyUserDetailsService;
 import com.hesham.backend.service.UserService;
 import com.hesham.backend.util.JwtUtil;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +23,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@Api(value = "User Resource REST Endpoint")
 public class UserController {
 
 

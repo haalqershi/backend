@@ -2,6 +2,7 @@ package com.hesham.backend.controller;
 
 import com.hesham.backend.model.StripeClient;
 import com.stripe.model.Charge;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @CrossOrigin
 @RequestMapping("/payment")
+@Api(value = "Stripe Payment Resource REST Endpoint")
 public class PaymentController {
 
     private StripeClient stripeClient;
