@@ -46,10 +46,17 @@ public class CategoryController {
     }
 
     @PutMapping("/update")
-    @ApiOperation(value = "Update a Product", notes = "used to update a product", response = Category.class)
-    public ResponseEntity<Category> updateProduct(@RequestBody Category category){
+    @ApiOperation(value = "Update a category", notes = "used to update a category", response = Category.class)
+    public ResponseEntity<Category> updateCategory(@RequestBody Category category){
         Category updatedCategory = this.categoryService.updateCategory(category);
         return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ApiOperation(value = "Delete a Product", notes = "used to delete a product by id", response = Product.class)
+    public ResponseEntity<?> deleteCategory(@PathVariable Long id){
+        this.categoryService.deleteCategory(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

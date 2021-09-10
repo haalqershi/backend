@@ -11,4 +11,6 @@ public interface CategoryService {
     Category save(Category category);
 
     Category updateCategory(Category category);
+
+    void deleteCategory(Long id);
 }

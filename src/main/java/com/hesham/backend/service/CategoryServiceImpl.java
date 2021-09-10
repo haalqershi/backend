@@ -35,4 +35,11 @@ public class CategoryServiceImpl implements CategoryService{
         updatedCategory.setCategoryName(category.getCategoryName());
         return this.categoryRepository.save(updatedCategory);
     }
+
+    @Override
+    public void deleteCategory(Long id) {
+        this.categoryRepository.deleteById(id);
+    }
+
+
 }
