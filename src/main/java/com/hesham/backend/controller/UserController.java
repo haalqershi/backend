@@ -76,8 +76,15 @@ public class UserController {
 
     @DeleteMapping("/user/delete/{id}")
     @ApiOperation(value = "Delete a User", notes = "used to delete a User by id", response = User.class)
-    public ResponseEntity<?> deleteProduct(@PathVariable Long id){
+    public ResponseEntity<?> deleteUser(@PathVariable Long id){
         this.userService.deleteUserbyId(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PutMapping("/update/{id}")
+    @ApiOperation(value = "Register a new user", notes = "used to register a new user", response = User.class)
+    public User updateUser(@PathVariable long id, @RequestBody User user) throws UserNotFoundException {
+        return this.userService.updateUser(id, user);
+    }
+
 }

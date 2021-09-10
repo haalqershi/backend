@@ -1,5 +1,6 @@
 package com.hesham.backend.service;
 
+import com.hesham.backend.exception.UserNotFoundException;
 import com.hesham.backend.model.User;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface UserService {
 
     User findUserByEmail(String email);
     
-    User updateUser(String username, String password, String firstName, String lastName);
+    User updateUser(long id, User user) throws UserNotFoundException;
     
     void deleteUserbyId(Long id);
 }

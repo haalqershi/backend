@@ -1,6 +1,7 @@
 package com.hesham.backend.service;
 
 import com.hesham.backend.controller.CategoryController;
+import com.hesham.backend.exception.UserNotFoundException;
 import com.hesham.backend.model.User;
 import com.hesham.backend.repository.UserRepository;
 import org.slf4j.Logger;
@@ -46,13 +47,16 @@ public class UserServiceImpl implements UserService{
     }
     
     @Override
-    public User updateUser(String username, String password, String firstName, String lastName) {
-    	User userUpdated = new User();
-    	userUpdated.setUsername(username);
-    	userUpdated.setPassword(passwordEncoder.encode(userUpdated.getPassword()));
-    	userUpdated.setFirstName(firstName);
-    	userUpdated.setLastName(lastName);
-		return this.userRepository.save(userUpdated);
+    public User updateUser(long id, User user) throws UserNotFoundException {
+        User updatedUser = this.userRepository.findById(id).orElse(null);
+        if(updatedUser == null){
+            throw new UserNotFoundException("user with Id: " + id);
+        }
+        updatedUser.setUsername(user.getUsername());
+        updatedUser.setPassword(user.getPassword());
+        updatedUser.setFirstName(user.getFirstName());
+        updatedUser.setLastName(user.getLastName());
+		return this.userRepository.save(updatedUser);
     	
     }
     
