@@ -38,11 +38,12 @@ public class UserServiceImpl implements UserService{
         user.setActive(true);
         user.setNotLocked(true);
         user.setLastLoginDate(new Date());
-        Role role = this.roleRepository.findByName("User");
-        System.out.println(role);
-        role.getUsers().add(user);
-        this.roleRepository.save(role);
-        user.getRoles().add(role);
+        user.setRoles("User");
+        //Role role = this.roleRepository.findByName("User");
+        //System.out.println(role);
+        //role.getUsers().add(user);
+        //this.roleRepository.save(role);
+        //user.getRoles().add(role);
         User newUser =  this.userRepository.save(user);
         return newUser;
     }

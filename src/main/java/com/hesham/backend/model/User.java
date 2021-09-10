@@ -25,15 +25,15 @@ public class User implements Serializable {
     private String username;
     private String email;
     private String password;
-    //private String roles; // like : ROLE_USER, ROLE_ADMIN
+    private String roles; // like : ROLE_USER, ROLE_ADMIN
     private String[] authorities; // like : read, create, update, delete
     private boolean isActive;
     private boolean isNotLocked;
     private Date lastLoginDate;
 
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="user_role",
-            joinColumns={@JoinColumn(referencedColumnName="id")}
-            , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})
-    private Set<Role> roles = new HashSet<>();
+//    @ManyToMany(cascade=CascadeType.ALL)
+//    @JoinTable(name="user_role",
+//            joinColumns={@JoinColumn(referencedColumnName="id")}
+//            , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})
+//    private Set<Role> roles = new HashSet<>();
 }

@@ -2,6 +2,7 @@ package com.hesham.backend;
 
 import com.hesham.backend.model.Category;
 import com.hesham.backend.model.Product;
+import com.hesham.backend.model.UpdateCategory;
 import com.hesham.backend.repository.CategoryRepository;
 import com.hesham.backend.service.CategoryService;
 import org.junit.jupiter.api.BeforeEach;
@@ -78,7 +79,7 @@ public class CategoryServiceTest {
     @Test
     public void testUpdateCategory(){
         when(categoryRepository.save(ArgumentMatchers.any(Category.class))).thenReturn(newCategory);
-        Category category = categoryService.updateCategory(new Category());
+        Category category = categoryService.updateCategory(new UpdateCategory());
 
         assertNotNull(category);
     }

@@ -41,8 +41,8 @@ public class UserServiceTest {
     @BeforeEach
     public void init(){
         user = new User(1l,"Hesham", "Alqershi", "hesham"
-                , "hesham_alqershi@hcl.com", passwordEncoder.encode("123"), null, true
-                , true, new Date(), null);
+                , "hesham_alqershi@hcl.com", passwordEncoder.encode("123"), "User", null,true
+                , true, new Date());
     }
 
     @AfterEach
@@ -62,8 +62,8 @@ public class UserServiceTest {
         assertEquals(users.get(0).getFirstName(), "Hesham");
 
         userList.add(new User(1l,"John", "Smith", "john123"
-                , "john123@hcl.com", "123", null, true
-                , true, new Date(), null));
+                , "john123@hcl.com", "123","User", null, true
+                , true, new Date()));
 
         users = userService.getAllUsers();
         assertEquals(users.size(), 2);

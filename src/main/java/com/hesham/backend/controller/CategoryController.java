@@ -2,6 +2,7 @@ package com.hesham.backend.controller;
 
 import com.hesham.backend.model.Category;
 import com.hesham.backend.model.Product;
+import com.hesham.backend.model.UpdateCategory;
 import com.hesham.backend.service.CategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -47,8 +48,8 @@ public class CategoryController {
 
     @PutMapping("/update")
     @ApiOperation(value = "Update a category", notes = "used to update a category", response = Category.class)
-    public ResponseEntity<Category> updateCategory(@RequestBody Category category){
-        Category updatedCategory = this.categoryService.updateCategory(category);
+    public ResponseEntity<Category> updateCategory(@RequestBody UpdateCategory updateCategory){
+        Category updatedCategory = this.categoryService.updateCategory(updateCategory);
         return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
     }
 

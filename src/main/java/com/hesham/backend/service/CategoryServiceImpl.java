@@ -3,6 +3,7 @@ package com.hesham.backend.service;
 import com.hesham.backend.controller.CategoryController;
 import com.hesham.backend.model.Category;
 import com.hesham.backend.model.Product;
+import com.hesham.backend.model.UpdateCategory;
 import com.hesham.backend.repository.CategoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,10 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public Category updateCategory(Category category) {
+    public Category updateCategory(UpdateCategory updateCategory) {
+        System.out.println(updateCategory);
+        Category category = this.categoryRepository.findById(updateCategory.getId()).orElse(null);
+        category.setCategoryName(updateCategory.getCategoryName());
         return this.categoryRepository.save(category);
     }
 

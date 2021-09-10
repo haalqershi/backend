@@ -10,8 +10,10 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
@@ -33,8 +35,8 @@ public class UserControllerTest {
         this.mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
     }
 
-    @Test
-    public void testRegisterUser() throws Exception {
+//    @Test
+//    public void testRegisterUser() throws Exception {
 //        User user = new User("Hesham", "Alqershi", "hesham"
 //                , "hesham_alqershi@hcl.com", "123", null, true
 //                , true, null, null);
@@ -45,8 +47,8 @@ public class UserControllerTest {
 //                        .accept(MediaType.APPLICATION_JSON))
 //                .andDo(print())
 //                .andExpect(MockMvcResultMatchers.jsonPath("$.password").exists());
-
-    }
+//
+//    }
 
     public static String asJsonString(final Object obj) {
         try {
