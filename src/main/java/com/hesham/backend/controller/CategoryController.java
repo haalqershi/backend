@@ -61,7 +61,7 @@ public class CategoryController {
 
     @GetMapping("/find/{id}")
     @ApiOperation(value = "Find a category", notes = "used to retrieve a category by id", response = Category.class)
-    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id){
+    public ResponseEntity<Category> getProductById(@PathVariable("id") Long id){
         Category category = this.categoryService.findCategoryById(id);
         return new ResponseEntity<>(category, HttpStatus.OK);
     }

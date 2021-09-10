@@ -90,4 +90,12 @@ public class CategoryServiceTest {
         verify(categoryRepository, times(1)).deleteById(1l);
     }
 
+    @Test
+    public void testFindCategoryById(){
+        when(categoryRepository.findById(1l)).thenReturn(Optional.of(newCategory));
+        Category category = categoryService.findCategoryById(1l);
+
+        assertNotNull(category);
+        verify(categoryRepository, times(1)).findById(category.getId());
+    }
 }
