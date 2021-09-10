@@ -53,10 +53,16 @@ public class CategoryController {
     }
 
     @DeleteMapping("/delete/{id}")
-    @ApiOperation(value = "Delete a Product", notes = "used to delete a product by id", response = Product.class)
+    @ApiOperation(value = "Delete a category", notes = "used to delete a category by id", response = Category.class)
     public ResponseEntity<?> deleteCategory(@PathVariable Long id){
         this.categoryService.deleteCategory(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/find/{id}")
+    @ApiOperation(value = "Find a category", notes = "used to retrieve a category by id", response = Category.class)
+    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id){
+        Product product = this.categoryService.findCategoryById(id);
+        return new ResponseEntity<>(product, HttpStatus.OK);
+    }
 }
