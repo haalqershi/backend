@@ -13,5 +13,6 @@ public interface UserService {
     User findUserByUsername(String username);
 
     User findUserByEmail(String email);
-
+    
+    User updateUser(String username, String password, String firstName, String lastName);
 }

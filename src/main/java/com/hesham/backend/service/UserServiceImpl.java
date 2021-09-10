@@ -44,4 +44,18 @@ public class UserServiceImpl implements UserService{
     public User findUserByEmail(String email) {
         return this.userRepository.findUserByEmail(email);
     }
+    
+    @Override
+    public User updateUser(String username, String password, String firstName, String lastName) {
+    	User userUpdated = new User();
+    	userUpdated.setUsername(username);
+    	userUpdated.setPassword(passwordEncoder.encode(password));
+    	userUpdated.setFirstName(firstName);
+    	userUpdated.setLastName(lastName);
+		return this.userRepository.save(userUpdated);
+    	
+    }
+    
+    // Need DeleteUser method
+    
 }
