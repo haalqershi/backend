@@ -9,4 +9,6 @@ public interface CategoryService {
     List<Category> findAllCategories();
 
     Category save(Category category);
+
+    Category updateCategory(Category category);
 }

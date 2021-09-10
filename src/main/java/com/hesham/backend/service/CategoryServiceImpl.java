@@ -28,4 +28,11 @@ public class CategoryServiceImpl implements CategoryService{
     public Category save(Category category) {
         return this.categoryRepository.save(category);
     }
+
+    @Override
+    public Category updateCategory(Category category) {
+        Category updatedCategory = this.categoryRepository.findById(category.getId()).orElse(null);
+        updatedCategory.setCategoryName(category.getCategoryName());
+        return this.categoryRepository.save(updatedCategory);
+    }
 }

@@ -1,12 +1,15 @@
 package com.hesham.backend.controller;
 
 import com.hesham.backend.model.Category;
+import com.hesham.backend.model.Product;
 import com.hesham.backend.service.CategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -41,4 +44,12 @@ public class CategoryController {
         logger.info("retrive all categories");
         return this.categoryService.findAllCategories();
     }
+
+    @PutMapping("/update")
+    @ApiOperation(value = "Update a Product", notes = "used to update a product", response = Category.class)
+    public ResponseEntity<Category> updateProduct(@RequestBody Category category){
+        Category updatedCategory = this.categoryService.updateCategory(category);
+        return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
+    }
+
 }
