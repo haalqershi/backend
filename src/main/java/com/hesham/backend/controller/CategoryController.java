@@ -62,7 +62,7 @@ public class CategoryController {
     @GetMapping("/find/{id}")
     @ApiOperation(value = "Find a category", notes = "used to retrieve a category by id", response = Category.class)
     public ResponseEntity<Product> getProductById(@PathVariable("id") Long id){
-        Product product = this.categoryService.findCategoryById(id);
-        return new ResponseEntity<>(product, HttpStatus.OK);
+        Category category = this.categoryService.findCategoryById(id);
+        return new ResponseEntity<>(category, HttpStatus.OK);
     }
 }
