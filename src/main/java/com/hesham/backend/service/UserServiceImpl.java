@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService{
     public User updateUser(String username, String password, String firstName, String lastName) {
     	User userUpdated = new User();
     	userUpdated.setUsername(username);
-    	userUpdated.setPassword(passwordEncoder.encode(password));
+    	userUpdated.setPassword(passwordEncoder.encode(userUpdated.getPassword()));
     	userUpdated.setFirstName(firstName);
     	userUpdated.setLastName(lastName);
 		return this.userRepository.save(userUpdated);
