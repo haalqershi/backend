@@ -1,8 +1,10 @@
 package com.hesham.backend.controller;
 
+import com.hesham.backend.model.Category;
 import com.hesham.backend.model.StripeClient;
 import com.stripe.model.Charge;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ public class PaymentController {
     }
 
     @PostMapping("/charge")
+    @ApiOperation(value = "charge a card", notes = "used to charge card", response = Charge.class)
     public Charge chargeCard(HttpServletRequest request) throws Exception {
         String token = request.getHeader("token");
         Double amount = Double.parseDouble(request.getHeader("amount"));

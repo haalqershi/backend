@@ -79,9 +79,16 @@ public class CategoryServiceTest {
     @Test
     public void testUpdateCategory(){
         when(categoryRepository.save(ArgumentMatchers.any(Category.class))).thenReturn(newCategory);
-        Category category = categoryService.updateCategory(new UpdateCategory());
-
+        Category category = categoryService.save(new Category());
         assertNotNull(category);
+
+//        categoryService.updateCategory(new UpdateCategory(1l, "phones"));
+//        when(categoryRepository.findById(ArgumentMatchers.any(Long.class))).thenReturn(Optional.of(newCategory));
+//        Category cate = categoryService.findCategoryById(1l);
+//
+//        assertNotNull(cate);
+//        verify(categoryRepository, times(1)).findById(category.getId());
+
     }
 
     @Test
