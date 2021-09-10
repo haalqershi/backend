@@ -82,7 +82,7 @@ public class UserController {
     }
 
     @PutMapping("/update/{id}")
-    @ApiOperation(value = "Register a new user", notes = "used to register a new user", response = User.class)
+    @ApiOperation(value = "Update a user", notes = "used to update a user", response = User.class)
     public User updateUser(@PathVariable long id, @RequestBody User user) throws UserNotFoundException {
         return this.userService.updateUser(id, user);
     }
