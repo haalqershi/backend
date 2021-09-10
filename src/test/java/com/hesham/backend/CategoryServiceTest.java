@@ -83,4 +83,11 @@ public class CategoryServiceTest {
         assertNotNull(category);
     }
 
+    @Test
+    public void testDeleteCategory(){
+        doNothing().when(categoryRepository).deleteById(1l);
+        categoryService.deleteCategory(1l);
+        verify(categoryRepository, times(1)).deleteById(1l);
+    }
+
 }
