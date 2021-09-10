@@ -20,7 +20,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest
@@ -96,5 +97,12 @@ public class UserServiceTest {
 
         assertNotNull(newUser);
         assertEquals(newUser.getEmail(), "hesham_alqershi@hcl.com");
+    }
+
+    @Test
+    public void testDeleteUserById(){
+        doNothing().when(userRepository).deleteById(1l);
+        userService.deleteUserbyId(1l);
+        verify(userRepository, times(1)).deleteById(1l);
     }
 }
