@@ -16,10 +16,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest
@@ -71,6 +73,14 @@ public class CategoryServiceTest {
 
         assertNotNull(category);
         assertEquals(category.getCategoryName(), "cell phones");
+    }
+
+    @Test
+    public void testUpdateCategory(){
+        when(categoryRepository.save(ArgumentMatchers.any(Category.class))).thenReturn(newCategory);
+        Category category = categoryService.updateCategory(new Category());
+
+        assertNotNull(category);
     }
 
 }
