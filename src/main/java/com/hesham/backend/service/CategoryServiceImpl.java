@@ -2,6 +2,7 @@ package com.hesham.backend.service;
 
 import com.hesham.backend.controller.CategoryController;
 import com.hesham.backend.model.Category;
+import com.hesham.backend.model.Product;
 import com.hesham.backend.repository.CategoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,11 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public void deleteCategory(Long id) {
         this.categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public Product findCategoryById(Long id) {
+        this.categoryRepository.findById(id).orElse(null);
     }
 
 
