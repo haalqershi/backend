@@ -74,4 +74,10 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    @DeleteMapping("/user/delete/{id}")
+    @ApiOperation(value = "Delete a User", notes = "used to delete a User by id", response = User.class)
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id){
+        this.userService.deleteUserbyId(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
