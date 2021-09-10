@@ -38,7 +38,7 @@ public class CategoryServiceTest {
 
     @BeforeEach
     public void loadCategories(){
-        newCategory = new Category("cell phones", Arrays.asList(new Product(1l, "Iphone xr"
+        newCategory = new Category(1l, "cell phones", Arrays.asList(new Product(1l, "Iphone xr"
                 , 450.70, 107, "Iphone xr 64GB", "")));
     }
 
@@ -92,7 +92,7 @@ public class CategoryServiceTest {
 
     @Test
     public void testFindCategoryById(){
-        when(categoryRepository.findById(1l)).thenReturn(Optional.of(newCategory));
+        when(categoryRepository.findById(ArgumentMatchers.any(Long.class))).thenReturn(Optional.of(newCategory));
         Category category = categoryService.findCategoryById(1l);
 
         assertNotNull(category);
