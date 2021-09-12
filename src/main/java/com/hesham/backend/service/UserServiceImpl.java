@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService{
             throw new UserNotFoundException("user with Id: " + id);
         }
         updatedUser.setUsername(user.getUsername());
-        updatedUser.setPassword(user.getPassword());
+        updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
         updatedUser.setFirstName(user.getFirstName());
         updatedUser.setLastName(user.getLastName());
 		return this.userRepository.save(updatedUser);
