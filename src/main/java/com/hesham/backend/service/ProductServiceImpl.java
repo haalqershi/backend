@@ -31,6 +31,7 @@ public class ProductServiceImpl implements ProductService{
         Category category = this.categoryRepository.findById(categoryId).orElse(null);
         Product newProduct = this.productRepository.save(product);
         category.getProducts().add(newProduct);
+        this.categoryRepository.save(category);
         return newProduct;
     }
 
