@@ -17,8 +17,7 @@ import java.io.Serializable;
 public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
@@ -26,6 +25,8 @@ public class Product implements Serializable {
     private int quantity;
     private String description;
     private String imageUrl;
+
+
 
 //    @ManyToOne
 //    private Category category;

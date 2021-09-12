@@ -1,8 +1,6 @@
 package com.hesham.backend.service;
 
-import com.hesham.backend.controller.CategoryController;
 import com.hesham.backend.exception.UserNotFoundException;
-import com.hesham.backend.model.Role;
 import com.hesham.backend.model.User;
 import com.hesham.backend.repository.RoleRepository;
 import com.hesham.backend.repository.UserRepository;
@@ -13,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 
 @Service

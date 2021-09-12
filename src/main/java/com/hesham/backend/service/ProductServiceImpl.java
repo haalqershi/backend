@@ -1,7 +1,7 @@
 package com.hesham.backend.service;
 
-import com.hesham.backend.controller.CategoryController;
 import com.hesham.backend.exception.ProductNotFoundException;
+import com.hesham.backend.model.Category;
 import com.hesham.backend.model.Product;
 import com.hesham.backend.repository.CategoryRepository;
 import com.hesham.backend.repository.ProductRepository;
@@ -19,19 +19,19 @@ public class ProductServiceImpl implements ProductService{
     private static Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     private ProductRepository productRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     public Product addProduct(Product product, long categoryId){
-        System.out.println("product " + product);
-        System.out.println(("category id : " + categoryId));
-        this.productRepository.addNewProduct(product.getId(), product.getDescription(), product.getImageUrl()
-                , product.getName(), product.getPrice(), product.getQuantity(), categoryId);
-
-        return product;
+        Product newProduct = this.productRepository.save(product);
+        Category category = this.categoryRepository.findById(categoryId).orElse(null);
+        category.getProducts().add(newProduct);
+        return newProduct;
     }
 
     public List<Product> findAllProducts(){
