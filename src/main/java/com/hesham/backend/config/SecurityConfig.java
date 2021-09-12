@@ -74,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public FilterRegistrationBean<CorsFilter> corsFilter() {
         final CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setAllowedOrigins(Arrays.asList("**", "https://angular-product-manager-demo.herokuapp.com", "http://localhost:4200", "http://localhost:4200/"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("**", "https://angular-product-manager-demo.herokuapp.com", "http://localhost:4200"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
                 "Accept", "Jwt-Token", "Authorization", "Origin, Accept", "X-Requested-With", "amount","token",
                 "Access-Control-Request-Method", "Access-Control-Request-Headers"));
