@@ -53,7 +53,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     public List<Product> findProductsByCategoryId(@RequestParam("id") long id){
-        return this.productRepository.findProductsByCategoryId(id);
+        Category category = this.categoryRepository.findById(id).orElse(null);
+        return category.getProducts();
     }
 
 }
