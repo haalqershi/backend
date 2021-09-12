@@ -1,6 +1,7 @@
 package com.hesham.backend.controller;
 
 import com.hesham.backend.model.Category;
+import com.hesham.backend.model.Product;
 import com.hesham.backend.model.UpdateCategory;
 import com.hesham.backend.service.CategoryService;
 import io.swagger.annotations.Api;
