@@ -6,6 +6,7 @@ import com.hesham.backend.repository.CategoryRepository;
 import com.hesham.backend.repository.ProductRepository;
 import com.hesham.backend.service.CategoryService;
 import com.hesham.backend.service.ProductService;
+import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
@@ -66,7 +67,7 @@ public class ProductServiceTest {
                 , 450.70, 107, "Iphone XR 64GB", ""));
 
         when(productRepository.findAll()).thenReturn(productList);
-        List<Product> products = productService.findAllProducts();
+        val products = productService.findAllProducts();
         assertEquals(products.size(), 1);
         assertEquals(products.get(0).getName(), "Iphone XR");
         assertEquals(products.get(0).getPrice(), 450.70);
