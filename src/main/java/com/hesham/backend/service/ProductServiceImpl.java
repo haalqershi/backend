@@ -28,8 +28,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     public Product addProduct(Product product, long categoryId){
-        Product newProduct = this.productRepository.save(product);
         Category category = this.categoryRepository.findById(categoryId).orElse(null);
+        Product newProduct = this.productRepository.save(product);
         category.getProducts().add(newProduct);
         return newProduct;
     }
