@@ -1,6 +1,5 @@
 package com.hesham.backend.controller;
 
-import com.hesham.backend.model.Category;
 import com.hesham.backend.model.StripeClient;
 import com.stripe.model.Charge;
 import io.swagger.annotations.Api;
@@ -30,6 +29,7 @@ public class PaymentController {
     @PostMapping("/charge")
     @ApiOperation(value = "charge a card", notes = "used to charge card", response = Charge.class)
     public Charge chargeCard(HttpServletRequest request) throws Exception {
+        logger.info("charging card with amount of " + request.getHeader("amount"));
         String token = request.getHeader("token");
         Double amount = Double.parseDouble(request.getHeader("amount"));
         return this.stripeClient.chargeCreditCard(token, amount);

@@ -1,7 +1,6 @@
 package com.hesham.backend.controller;
 
 import com.hesham.backend.model.Product;
-import com.hesham.backend.service.CategoryService;
 import com.hesham.backend.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,12 +20,10 @@ import java.util.List;
 public class ProductController {
     private static Logger logger = LoggerFactory.getLogger(ProductController.class);
     private ProductService productService;
-    private CategoryService categoryService;
 
     @Autowired
-    public ProductController(ProductService productService, CategoryService categoryService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
-        this.categoryService = categoryService;
     }
 
     @GetMapping("/all")
@@ -39,6 +36,7 @@ public class ProductController {
     @GetMapping("/find/{id}")
     @ApiOperation(value = "Find a Product", notes = "used to retrieve a product by id", response = Product.class)
     public ResponseEntity<Product> getProductById(@PathVariable("id") Long id){
+        logger.info("getting product with a product id: " + id);
         Product product = this.productService.findProductById(id);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
@@ -59,7 +57,7 @@ public class ProductController {
 
     @DeleteMapping("/delete/{id}")
     @ApiOperation(value = "Delete a Product", notes = "used to delete a product by id", response = Product.class)
-    public ResponseEntity<?> deleteProduct(@PathVariable Long id){
+    public ResponseEntity deleteProduct(@PathVariable Long id){
         this.productService.deleteProduct(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

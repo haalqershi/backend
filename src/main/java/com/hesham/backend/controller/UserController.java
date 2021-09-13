@@ -48,6 +48,7 @@ public class UserController {
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername()
                     , authenticationRequest.getPassword()));
+            logger.info("logging with username: " + authenticationRequest.getUsername());
         } catch (BadCredentialsException ex){
             throw new UserNotFoundException("User Not Found : " + ex);
         }

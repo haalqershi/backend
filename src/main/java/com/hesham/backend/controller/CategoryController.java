@@ -1,7 +1,6 @@
 package com.hesham.backend.controller;
 
 import com.hesham.backend.model.Category;
-import com.hesham.backend.model.Product;
 import com.hesham.backend.model.UpdateCategory;
 import com.hesham.backend.service.CategoryService;
 import io.swagger.annotations.Api;
@@ -55,7 +54,7 @@ public class CategoryController {
 
     @DeleteMapping("/delete/{id}")
     @ApiOperation(value = "Delete a category", notes = "used to delete a category by id", response = Category.class)
-    public ResponseEntity<?> deleteCategory(@PathVariable Long id){
+    public ResponseEntity deleteCategory(@PathVariable Long id){
         this.categoryService.deleteCategory(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

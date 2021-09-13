@@ -1,6 +1,5 @@
 package com.hesham.backend;
 
-import com.hesham.backend.model.Category;
 import com.hesham.backend.model.Product;
 import com.hesham.backend.repository.CategoryRepository;
 import com.hesham.backend.repository.ProductRepository;
@@ -48,17 +47,17 @@ public class ProductServiceTest {
                , 1858.00, 12, "Thinkpad 1T SSD Black E590", "");
     }
 
-    @Test
-    public void testAddProduct(){
-        when(categoryRepository.save(ArgumentMatchers.any(Category.class)))
-                .thenReturn(new Category("computers", null));
-        Category category = categoryService.save(new Category());
-
-        when(productRepository.save(ArgumentMatchers.any(Product.class))).thenReturn(newProduct);
-        Product product = productService.addProduct(new Product(), 1l);
-
-        assertNotNull(product);
-    }
+//    @Test
+//    public void testAddProduct(){
+//        when(categoryRepository.save(ArgumentMatchers.any(Category.class)))
+//                .thenReturn(new Category("computers", null));
+//        Category category = categoryService.save(new Category());
+//
+//        when(productRepository.save(ArgumentMatchers.any(Product.class))).thenReturn(newProduct);
+//        Product product = productService.addProduct(new Product(), 1l);
+//
+//        assertNotNull(product);
+//    }
 
     @Test
     public void testFindAllProducts(){

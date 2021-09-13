@@ -30,6 +30,9 @@ public class ProductServiceImpl implements ProductService{
     public Product addProduct(Product product, long categoryId){
         Category category = this.categoryRepository.findById(categoryId).orElse(null);
         Product newProduct = this.productRepository.save(product);
+        if(category == null){
+            throw new NullPointerException("No categeory esit with id " +categoryId);
+        }
         category.getProducts().add(newProduct);
         this.categoryRepository.save(category);
         return newProduct;
@@ -55,6 +58,9 @@ public class ProductServiceImpl implements ProductService{
 
     public List<Product> findProductsByCategoryId(@RequestParam("id") long id){
         Category category = this.categoryRepository.findById(id).orElse(null);
+        if(category == null){
+            throw new NullPointerException("No categeory esit with id " + id);
+        }
         return category.getProducts();
     }
 
