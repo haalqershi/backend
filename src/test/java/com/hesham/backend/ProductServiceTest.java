@@ -26,7 +26,7 @@ import static org.mockito.Mockito.*;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ProductServiceTest {
+class ProductServiceTest {
     @MockBean
     ProductRepository productRepository;
 
@@ -60,25 +60,25 @@ public class ProductServiceTest {
 //    }
 
     @Test
-    public void testFindAllProducts(){
+    void testFindAllProducts(){
         List<Product> productList = new ArrayList<>();
         productList.add(new Product(2l, "Iphone XR"
                 , 450.70, 107, "Iphone XR 64GB", ""));
 
         when(productRepository.findAll()).thenReturn(productList);
         val products = productService.findAllProducts();
-        assertEquals(products.size(), 1);
-        assertEquals(products.get(0).getName(), "Iphone XR");
-        assertEquals(products.get(0).getPrice(), 450.70);
+        assertEquals(1, products.size());
+        assertEquals("Iphone XR", products.get(0).getName());
+        assertEquals(450.70, products.get(0).getPrice());
 
         productList.add(newProduct);
-        assertEquals(products.size(), 2);
-        assertEquals(products.get(1).getName(), "Thinkpad");
-        assertEquals(products.get(1).getPrice(), 1858.00);
+        assertEquals(2, products.size());
+        assertEquals("Thinkpad", products.get(1).getName());
+        assertEquals(1858.00, products.get(1).getPrice());
     }
 
     @Test
-    public void testUpdateProduct(){
+    void testUpdateProduct(){
         when(productRepository.save(ArgumentMatchers.any(Product.class))).thenReturn(newProduct);
         Product product = productService.updateProduct(new Product());
 
@@ -86,7 +86,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void testFindProductById(){
+    void testFindProductById(){
         when(productRepository.findProductById(1l)).thenReturn(Optional.of(newProduct));
         Product product = productService.findProductById(1l);
 
@@ -95,7 +95,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void testDeleteProduct(){
+    void testDeleteProduct(){
         doNothing().when(productRepository).deleteById(1l);
         productService.deleteProduct(1l);
         verify(productRepository, times(1)).deleteById(1l);

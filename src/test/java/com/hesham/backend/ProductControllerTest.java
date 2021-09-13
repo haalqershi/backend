@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ProductControllerTest {
+class ProductControllerTest {
     ObjectMapper mapper;
     private MockMvc mockMvc;
     @MockBean
@@ -44,7 +44,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void testGetAllProducts() throws Exception {
+    void testGetAllProducts() throws Exception {
 
         List<Product> products = new ArrayList<>();
         products.add(new Product(1l, "iphone 8", 450.50
@@ -61,7 +61,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void testGetCategoryByCategoryId() throws Exception {
+    void testGetCategoryByCategoryId() throws Exception {
 
         List <Product> products = new ArrayList<>();
         products.add(new Product(1l, "design pattern"
