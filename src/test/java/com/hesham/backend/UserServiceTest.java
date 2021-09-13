@@ -26,7 +26,7 @@ import static org.mockito.Mockito.times;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UserServiceTest {
+class UserServiceTest {
     @MockBean
     UserRepository userRepository;
 
@@ -51,27 +51,27 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testGetAllUsers(){
+    void testGetAllUsers(){
         List<User> userList = new ArrayList<>();
         userList.add(user);
 
         when(userRepository.findAll()).thenReturn(userList);
 
         List<User> users = userService.getAllUsers();
-        assertEquals(users.size(), 1);
-        assertEquals(users.get(0).getFirstName(), "Hesham");
+        assertEquals(1, users.size());
+        assertEquals("Hesham", users.get(0).getFirstName());
 
         userList.add(new User(1l,"John", "Smith", "john123"
                 , "john123@hcl.com", "123","User", null, true
                 , true, new Date()));
 
         users = userService.getAllUsers();
-        assertEquals(users.size(), 2);
-        assertEquals(users.get(1).getFirstName(), "John");
+        assertEquals(2, users.size());
+        assertEquals("John", users.get(1).getFirstName());
     }
 
     @Test
-    public void testRegisterNewUser(){
+    void testRegisterNewUser(){
 //        when(userRepository.save(ArgumentMatchers.any(User.class))).thenReturn(user);
 //
 //        User newUser = userService.registerNewUser(new User());
@@ -82,25 +82,25 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testFindUserByUsername(){
+    void testFindUserByUsername(){
         when(userRepository.findUserByUsername(ArgumentMatchers.any(String.class))).thenReturn(user);
         User newUser = userService.findUserByUsername("hesham");
 
         assertNotNull(newUser);
-        assertEquals(newUser.getUsername(), "hesham");
+        assertEquals("hesham", newUser.getUsername());
     }
 
     @Test
-    public void findUserByEmail(){
+    void findUserByEmail(){
         when(userRepository.findUserByEmail(ArgumentMatchers.any(String.class))).thenReturn(user);
         User newUser = userService.findUserByEmail("hesham_alqershi@hcl.com");
 
         assertNotNull(newUser);
-        assertEquals(newUser.getEmail(), "hesham_alqershi@hcl.com");
+        assertEquals("hesham_alqershi@hcl.com", newUser.getEmail());
     }
 
     @Test
-    public void testDeleteUserById(){
+    void testDeleteUserById(){
         doNothing().when(userRepository).deleteById(1l);
         userService.deleteUserbyId(1l);
         verify(userRepository, times(1)).deleteById(1l);
