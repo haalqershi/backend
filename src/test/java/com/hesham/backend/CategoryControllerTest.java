@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CategoryControllerTest {
+class CategoryControllerTest {
     ObjectMapper mapper;
     private MockMvc mockMvc;
     @MockBean
@@ -46,7 +46,7 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void testGetAllCategories() throws Exception {
+    void testGetAllCategories() throws Exception {
         List<Category> categories = new ArrayList<>();
         categories.add(new Category(1l, "books",
                 Arrays.asList(new Product(1l, "design pattern"

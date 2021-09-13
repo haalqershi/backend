@@ -2,7 +2,6 @@ package com.hesham.backend;
 
 import com.hesham.backend.model.Category;
 import com.hesham.backend.model.Product;
-import com.hesham.backend.model.UpdateCategory;
 import com.hesham.backend.repository.CategoryRepository;
 import com.hesham.backend.service.CategoryService;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,12 +21,11 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CategoryServiceTest {
+class CategoryServiceTest {
 
     @MockBean
     CategoryRepository categoryRepository;
@@ -44,7 +42,7 @@ public class CategoryServiceTest {
     }
 
     @Test
-    public void testFindAllCategories(){
+    void testFindAllCategories(){
         List<Category> categoryList = new ArrayList<>();
         categoryList.add(new Category("computers", Arrays.asList(new Product(1l, "Thinkpad"
                         , 1858.00, 12, "Thinkpad 1T SSD Black E590", ""),
@@ -55,29 +53,29 @@ public class CategoryServiceTest {
 
         List<Category> categories = categoryService.findAllCategories();
 
-        assertEquals(categories.size(), 1);
-        assertEquals(categories.get(0).getCategoryName(), "computers");
-        assertEquals(categories.get(0).getProducts().size(), 2);
+        assertEquals(1, categories.size());
+        assertEquals("computers", categories.get(0).getCategoryName());
+        assertEquals(2, categories.get(0).getProducts().size());
 
         categories.add(newCategory);
 
-        assertEquals(categories.size(), 2);
-        assertEquals(categories.get(1).getCategoryName(), "cell phones");
-        assertEquals(categories.get(1).getProducts().size(), 1);
+        assertEquals(2, categories.size());
+        assertEquals("cell phones", categories.get(1).getCategoryName());
+        assertEquals(1, categories.get(1).getProducts().size());
     }
 
     @Test
-    public void testAddCategory(){
+    void testAddCategory(){
         when(categoryRepository.save(ArgumentMatchers.any(Category.class))).thenReturn(newCategory);
 
         Category category = categoryService.save(new Category());
 
         assertNotNull(category);
-        assertEquals(category.getCategoryName(), "cell phones");
+        assertEquals("cell phones", category.getCategoryName());
     }
 
     @Test
-    public void testUpdateCategory(){
+    void testUpdateCategory(){
         when(categoryRepository.save(ArgumentMatchers.any(Category.class))).thenReturn(newCategory);
         Category category = categoryService.save(new Category());
         assertNotNull(category);
@@ -92,14 +90,14 @@ public class CategoryServiceTest {
     }
 
     @Test
-    public void testDeleteCategory(){
+    void testDeleteCategory(){
         doNothing().when(categoryRepository).deleteById(1l);
         categoryService.deleteCategory(1l);
         verify(categoryRepository, times(1)).deleteById(1l);
     }
 
     @Test
-    public void testFindCategoryById(){
+    void testFindCategoryById(){
         when(categoryRepository.findById(ArgumentMatchers.any(Long.class))).thenReturn(Optional.of(newCategory));
         Category category = categoryService.findCategoryById(1l);
 
