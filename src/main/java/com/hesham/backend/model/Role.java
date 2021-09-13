@@ -3,10 +3,7 @@ package com.hesham.backend.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Data
@@ -19,7 +16,4 @@ public class Role {
 
     private String roleName;
 
-
-//    @ManyToMany(mappedBy = "roles" , fetch = FetchType.EAGER)
-//    private Set<User> users = new HashSet<>();
 }

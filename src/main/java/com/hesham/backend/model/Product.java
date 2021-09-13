@@ -25,10 +25,4 @@ public class Product implements Serializable {
     private int quantity;
     private String description;
     private String imageUrl;
-
-
-
-//    @ManyToOne
-//    private Category category;
-
 }
