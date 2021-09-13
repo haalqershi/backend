@@ -2,7 +2,6 @@ package com.hesham.backend.service;
 
 import com.hesham.backend.exception.UserNotFoundException;
 import com.hesham.backend.model.User;
-import com.hesham.backend.repository.RoleRepository;
 import com.hesham.backend.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,30 +18,23 @@ public class UserServiceImpl implements UserService{
     private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     private UserRepository userRepository;
-    private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public User registerNewUser(User user) {
+        logger.info("register a new user with a username: " + user.getUsername());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(true);
         user.setNotLocked(true);
         user.setLastLoginDate(new Date());
         user.setRoles("User");
-        //Role role = this.roleRepository.findByName("User");
-        //System.out.println(role);
-        //role.getUsers().add(user);
-        //this.roleRepository.save(role);
-        //user.getRoles().add(role);
-        User newUser =  this.userRepository.save(user);
-        return newUser;
+        return this.userRepository.save(user);
     }
 
     @Override
