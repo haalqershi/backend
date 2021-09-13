@@ -36,7 +36,7 @@ public class ProductController {
     @GetMapping("/find/{id}")
     @ApiOperation(value = "Find a Product", notes = "used to retrieve a product by id", response = Product.class)
     public ResponseEntity<Product> getProductById(@PathVariable("id") Long id){
-        logger.info("getting product with a product id: " + id);
+        logger.info("getting product with a product id: %d", id);
         Product product = this.productService.findProductById(id);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
@@ -59,7 +59,7 @@ public class ProductController {
     @ApiOperation(value = "Delete a Product", notes = "used to delete a product by id", response = Product.class)
     public ResponseEntity deleteProduct(@PathVariable Long id){
         this.productService.deleteProduct(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping("/category/{id}")

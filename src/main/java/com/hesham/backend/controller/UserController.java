@@ -48,7 +48,7 @@ public class UserController {
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername()
                     , authenticationRequest.getPassword()));
-            logger.info("logging with username: " + authenticationRequest.getUsername());
+            logger.info("logging with username: %s",authenticationRequest.getUsername());
         } catch (BadCredentialsException ex){
             throw new UserNotFoundException("User Not Found : " + ex);
         }
@@ -58,7 +58,7 @@ public class UserController {
         final String jwt = jwtToken.generateToken(userDetails);
         HttpHeaders jwtHeader = new HttpHeaders();
         jwtHeader.add("Jwt-Token", new AuthenticationResponse(jwt).getJwt());
-        return new ResponseEntity<>(authenticationRequest , jwtHeader, HttpStatus.OK);
+        return new ResponseEntity(authenticationRequest , jwtHeader, HttpStatus.OK);
     }
 
     @PostMapping("/register")
@@ -78,7 +78,7 @@ public class UserController {
     @ApiOperation(value = "Delete a User", notes = "used to delete a User by id", response = User.class)
     public ResponseEntity deleteUser(@PathVariable Long id){
         this.userService.deleteUserbyId(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")

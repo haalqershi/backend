@@ -36,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService{
             throw new NullPointerException("No categeory esit with id " + updateCategory.getId());
         }
         category.setCategoryName(updateCategory.getCategoryName());
-        logger.info("update category with name: " + updateCategory.getCategoryName());
+        logger.info("update category with name: %s", updateCategory.getCategoryName());
 
         return this.categoryRepository.save(category);
     }

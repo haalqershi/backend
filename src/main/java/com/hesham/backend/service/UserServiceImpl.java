@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User registerNewUser(User user) {
-        logger.info("register a new user with a username: " + user.getUsername());
+        logger.info("register a new user with a username: %s", user.getUsername());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(true);
         user.setNotLocked(true);

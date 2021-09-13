@@ -13,7 +13,7 @@ import java.util.Map;
 @Component
 public class StripeClient {
 
-    private final String SOURCE = "source";
+    private final static String SOURCE = "source";
 
     @Autowired
     StripeClient() {
