@@ -23,7 +23,6 @@ public class MyExceptionHandler {
     private static final String REQUEST_IS_NOT_ALLOWED = "This request is not allowed on this endpoint, send a '$s' request";
     private static final String INTERNAL_SERVER_ERROR_MESSAGE = "Unexpected error occurred during processing the request";
     private static final String BAD_CREDENTIALS="username/ password incorrect.Try again?";
-    private static final String NOT_HAVE_PERMISSION = "You do not have permission";
     private static final String ACCOUNT_IS_DISABLED = "Your account has been disabled";
 
     private ResponseEntity<HttpResponse> createHttpResponse(HttpStatus httpStatus, String message){
