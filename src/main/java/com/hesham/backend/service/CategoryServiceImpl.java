@@ -31,12 +31,13 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public Category updateCategory(UpdateCategory updateCategory) {
-        System.out.println(updateCategory);
         Category category = this.categoryRepository.findById(updateCategory.getId()).orElse(null);
         if(category == null){
             throw new NullPointerException("No categeory esit with id " + updateCategory.getId());
         }
         category.setCategoryName(updateCategory.getCategoryName());
+        logger.info("update category with name: " + updateCategory.getCategoryName());
+
         return this.categoryRepository.save(category);
     }
 

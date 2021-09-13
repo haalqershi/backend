@@ -14,9 +14,9 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Transactional
     @Query(
             value =
-                    "insert into category (id, category_name) values (:id, :category_name)",
+                    "insert into category (id, categoryName) values (:id, :category_name)",
             nativeQuery = true)
     void addNewCategory(@Param("id") Long id
-            , @Param("category_name") String category_name);
+            , @Param("category_name") String categoryName);
 
 }

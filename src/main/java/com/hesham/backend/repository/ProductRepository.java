@@ -15,23 +15,23 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 
     Optional<Product> findProductById(Long aLong);
 
-    @Query(value = "SELECT * FROM product p WHERE p.category_id = :category_id",
+    @Query(value = "SELECT * FROM product p WHERE p.categoryId = :category_id",
             nativeQuery = true)
     List<Product> findProductsByCategoryId(
-            @Param("category_id") Long category_id);
+            @Param("category_id") Long categoryId);
 
 
     @Modifying
     @Transactional
     @Query(
             value =
-                    "insert into product (id, description, image_url, name, price, quantity, category_id) values (:id, :description, :image_url, :name, :price, :quantity, :category_id)",
+                    "insert into product (id, description, imageUrl, name, price, quantity, categoryId) values (:id, :description, :image_url, :name, :price, :quantity, :category_id)",
             nativeQuery = true)
     void addNewProduct(@Param("id") Long id
             , @Param("description") String description
-            , @Param("image_url") String image_url
+            , @Param("image_url") String imageUrl
             , @Param("name") String name
             , @Param("price")  Double price
             , @Param("quantity") Integer quantity
-            , @Param("category_id") Long category_id);
+            , @Param("category_id") Long categoryId);
 }

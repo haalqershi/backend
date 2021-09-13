@@ -29,10 +29,4 @@ public class User implements Serializable {
     private boolean isActive;
     private boolean isNotLocked;
     private Date lastLoginDate;
-
-//    @ManyToMany(cascade=CascadeType.ALL)
-//    @JoinTable(name="user_role",
-//            joinColumns={@JoinColumn(referencedColumnName="id")}
-//            , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})
-//    private Set<Role> roles = new HashSet<>();
 }
